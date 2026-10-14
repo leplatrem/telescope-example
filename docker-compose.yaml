@@ -1,0 +1,13 @@
+services:
+  telescope:
+    image: mozilla/telescope
+    platform: linux/amd64
+    ports:
+      - "9797:8000"
+    environment:
+      PYTHONPATH: /app/mychecks
+      SERVICE_TITLE: "QA Dashboard"
+    volumes:
+      - ./config.toml:/app/config.toml:ro
+      - ./diagram.svg:/app/diagram.svg:ro
+      - ./mychecks:/app/mychecks:ro

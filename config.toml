@@ -1,0 +1,17 @@
+[checks.main.global-status]
+description = "Combination of all critical checks"
+module = "checks.core.heartbeat"
+params.url = "http://localhost:8000/checks/tags/critical"
+
+[checks.myproject.good-latency]
+description = "Good connection?"
+module = "checks.core.latency"
+params.url = "https://mozilla.org"
+params.max_milliseconds = 500
+tags = ["critical"]
+
+[checks.myproject.can-deploy]
+description = "Can we deploy today?"
+module = "candeploy"
+params.forbidden_day = "fri"
+tags = ["critical"]
